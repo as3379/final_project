@@ -14,8 +14,18 @@ class tasksController extends http\controller
     //to call the show function the url is index.php?page=task&action=show
     public static function show()
     {
-        $record = todos::findOne($_REQUEST['id']);
-        self::getTemplate('show_task', $record);
+        $record = todos::findTasksbyID($_SESSION['userID']);
+        if($recored == FALSE)
+        {
+            self::getTemplate('make_tasks');
+        }
+        else{
+
+            self::getTemplate('show_task', $record);
+
+        }
+
+
     }
 
     //to call the show function the url is index.php?page=task&action=list_task
@@ -57,11 +67,20 @@ class tasksController extends http\controller
     public static function store()
     {
 
+        session_start();
 
-        $record = todos::findOne($_REQUEST['id']);
-        $record->body = $_REQUEST['body'];
+        $record = new todo();
+        $record->createddate = $_POST['createddate'];
+        $record->duedate = $_POST['duedate'];
+        $record->message = $_POST['message'];
+        $record->isdone = $_POST['isdone'];
+        $record->ownerid = $_SESSION['userID'];
+        $record->owneremail = $_SESSION['email'];
+
         $record->save();
-        print_r($_POST);
+        header("Location: https://web.njit.edu/~as3379/index.php?page=tasks&action=all");
+
+
 
     }
 

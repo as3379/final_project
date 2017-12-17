@@ -45,7 +45,9 @@ class accountsController extends http\controller
     public static function store()
 
     {
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
+
+        session_start();
+        $user = accounts::findUserbyEmail($_POST['email']);
 
 
         if ($user == FALSE) {
@@ -63,10 +65,13 @@ class accountsController extends http\controller
             $user->password = $user->setPassword($_POST['password']);
             $user->save();
 
+            $_SESSION['userID'] = $user->id;
+            $_SESSION['email'] =  $_POST['email'];
+
             //you may want to send the person to a
             // login page or create a session and log them in
             // and then send them to the task list page and a link to create tasks
-            header("Location: index.php?page=accounts&action=all");
+            header('header: http://index.php?page=todos&action=show');
 
         } else {
             //You can make a template for errors called error.php
@@ -118,7 +123,7 @@ class accountsController extends http\controller
         //after you login you can use the header function to forward the user to a page that displays their tasks.
         //        $record = accounts::findUser($_POST['email']);
 
-        $user = accounts::findUserbyEmail($_REQUEST['email']);
+        $user = accounts::findUserbyEmail($_POST['email']);
 
 
         if ($user == FALSE) {
@@ -127,12 +132,15 @@ class accountsController extends http\controller
 
             if($user->checkPassword($_POST['password']) == TRUE) {
 
-                echo 'login';
+              //  echo 'login';
 
                 session_start();
                 $_SESSION["userID"] = $user->id;
                 //forward the user to the show all todos page
-                print_r($_SESSION);
+               $_SESSION['email'] = $_POST['email'];
+                echo 'I am here';
+               header('Location:index.php?page=todos&action=show');
+
             } else {
                 echo 'password does not match';
             }

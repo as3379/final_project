@@ -36,4 +36,16 @@ class homepageController extends http\controller
         print_r($_POST);
     }
 
+    static public function logout()
+    {
+        // remove all session variables
+        session_unset();
+
+        // destroy the session
+        session_destroy();
+
+        header("Location:  https://web.njit.edu/~as3379/final_project/");
+
+    }
+
 }

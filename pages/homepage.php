@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>Sign-Up/Login Form</title>
+    <title>Task Management Application</title>
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -13,9 +13,9 @@
 </head>
 
 <body>
-
+<h1><strong>Task Management Application</strong> </h1>
 <h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
-<h1><a href="index.php?page=tasks&action=all">Show All Tasks</a></h1>
+<h1><a href="index.php?page=tasksApplication&action=all">Show All Tasks</a></h1>
 <div class="form">
 
     <ul class="tab-group">
@@ -27,21 +27,21 @@
         <div id="signup">
 
 
-            <form action="index.php?page=accounts&action=register" method="post">
+            <form action="index.php?page=accounts&action=store" method="post">
 
                 <div class="top-row">
                     <div class="field-wrap">
                         <label>
                             First Name<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" />
+                        <input type="text" name="fname" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             Last Name<span class="req">*</span>
                         </label>
-                        <input type="text"required autocomplete="off"/>
+                        <input type="text" name="lname" required autocomplete="off"/>
                     </div>
                 </div>
 
@@ -49,33 +49,33 @@
                     <label>
                         Email Address<span class="req">*</span>
                     </label>
-                    <input type="email"required autocomplete="off"/>
+                    <input type="email" name="email" required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Phone number<span class="req">*</span>
                     </label>
-                    <input type="phone"required autocomplete="off"/>
+                    <input type="phone" name="phone" required autocomplete="off"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         Birthday<span class="req">*</span>
                     </label>
-                    <input type="birthday"required autocomplete="off"/>
+                    <input type="birthday" name="birthday" required autocomplete="off"/>
                 </div>
                 <div class="field-wrap">
                     <label>
                         Gender<span class="req">*</span>
                     </label>
-                    <input type="gender"required autocomplete="off"/>
+                    <input type="gender" name="gender" required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Set A Password<span class="req">*</span>
                     </label>
-                    <input type="password"required autocomplete="off"/>
+                    <input type="password" name="password" required autocomplete="off"/>
                 </div>
 
                 <button type="submit" class="button button-block"/>Get Started</button>
@@ -87,20 +87,20 @@
         <div id="login">
             <h1>Welcome Back!</h1>
 
-            <form action="index.php?page=accounts&action=register" method="post">
+            <form action="index.php?page=accounts&action=login" method="post">
 
                 <div class="field-wrap">
                     <label>
                         Email Address<span class="req">*</span>
                     </label>
-                    <input type="email"required autocomplete="off"/>
+                    <input type="email" name="email" required autocomplete="off"/>
                 </div>
 
                 <div class="field-wrap">
                     <label>
                         Password<span class="req">*</span>
                     </label>
-                    <input type="password"required autocomplete="off"/>
+                    <input type="password" name="password" required autocomplete="off"/>
                 </div>
 
 

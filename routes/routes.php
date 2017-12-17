@@ -146,6 +146,22 @@ class routes
         $route->method = 'store';
         $routes[] = $route;
 
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'store';
+        $route->page = 'accounts';
+        $route->controller = 'accountsController';
+        $route->method = 'store';
+        $routes[] = $route;
+
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'show';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'show';
+        $routes[] = $route;
+
 
         return $routes;
     }

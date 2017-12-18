@@ -14,8 +14,7 @@
 
 <body>
 <h1><strong>Task Management Application</strong> </h1>
-<h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
-<h1><a href="index.php?page=tasksApplication&action=all">Show All Tasks</a></h1>
+
 <div class="form">
 
     <ul class="tab-group">

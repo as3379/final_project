@@ -13,17 +13,17 @@
     <link href="css/main.css" rel="stylesheet">
 
     <style>
-body{
+        body{
 
-    background-color: #c1bdba;
-}
+            background-color: #c1bdba;
+        }
 
-.navbar-custom {
-    background-color:#1ab188;
-    color:#ffffff;
-    border-radius:0;
-}
-        
+        .navbar-custom {
+            background-color:#1ab188;
+            color:#ffffff;
+            border-radius:0;
+        }
+
 
     </style>
 

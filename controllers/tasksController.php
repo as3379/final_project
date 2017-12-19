@@ -33,7 +33,7 @@ class tasksController extends http\controller
         }
         else
         {
-            self::getTemplate('create_task');
+            self::getTemplate('no_task');
         }
 
 

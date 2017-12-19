@@ -44,8 +44,6 @@
 
         <br>
 
-        <label><b>password</b></label>
-        <input type="text" value="<?php echo $array['password'] ?>" name="password" >
 
         <button type="submit">Update</button>
     </div>

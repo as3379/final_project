@@ -19,8 +19,8 @@ class accountsController extends http\controller
 
     public static function all()
     {
-       // $records = accounts::findAll();
-       // self::getTemplate('all_accounts', $records);
+        // $records = accounts::findAll();
+        // self::getTemplate('all_accounts', $records);
 
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
@@ -33,7 +33,7 @@ class accountsController extends http\controller
     {
         //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
         //USE THE ABOVE TO SEE HOW TO USE Bcrypt
-       // print_r($_POST);
+        // print_r($_POST);
 
         self::getTemplate('register');
         //this just shows creating an account.
@@ -43,36 +43,45 @@ class accountsController extends http\controller
     //this is the function to save the user the user profile
     public static function store()
     {
-      //  print_r($_POST);
+
+        if (validate::password($_POST['password']) == false) {
+            echo 'password must be at least 6 characters';
+        } else {
+        //  print_r($_POST);
         $user = accounts::findUserbyEmail($_POST['email']);
 
-        if($user==FALSE) {
-
-            session_start();
-            $record = new account();
-           // print_r($record);
-            $record->birthday = $_POST['birthday'];
-            $record->gender = $_POST['gender'];
-            $record->email = $_POST['email'];
-            $record->fname = $_POST['fname'];
-            $record->lname = $_POST['lname'];
-            $record->phone = $_POST['phone'];
-            $record->password = utility\password::setPassword($_POST['password']);
-            $record->save();
-            $user = accounts::findUserbyEmail($_POST['email']);
+        if ($user == FALSE) {
 
 
-            $_SESSION["email"] = $user->email;
-            $_SESSION["userID"] = $user->id;
 
-           header("Location:https://web.njit.edu/~o/index.php?page=tasks&action=all");
-        }
+                session_start();
+                $record = new account();
+                // print_r($record);
+                $record->birthday = $_POST['birthday'];
+                $record->gender = $_POST['gender'];
+                $record->email = $_POST['email'];
+                $record->fname = $_POST['fname'];
+                $record->lname = $_POST['lname'];
+                $record->phone = $_POST['phone'];
+                $record->password = utility\password::setPassword($_POST['password']);
+                $record->save();
+                $user = accounts::findUserbyEmail($_POST['email']);
+
+
+                $_SESSION["email"] = $user->email;
+                $_SESSION["userID"] = $user->id;
+
+                header("Location:https://web.njit.edu/~as3379/final_project/index.php?page=tasks&action=all");
+            }
+
         else
-        {
-            $error = 'already registered';
-            self::getTemplate('error', $error);
+            {
+                $error = 'already registered';
+                self::getTemplate('error', $error);
+            }
         }
     }
+
 
     public static function edit()
     {

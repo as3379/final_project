@@ -24,6 +24,14 @@
             border-radius:0;
         }
 
+         .center {
+             margin: auto;
+             width: 50%;
+             border: 3px solid #73AD21;
+             padding: 10px;
+         }
+
+
 
     </style>
 

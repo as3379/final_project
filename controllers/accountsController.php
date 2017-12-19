@@ -44,14 +44,12 @@ class accountsController extends http\controller
     public static function store()
     {
 
-        if (validate::password($_POST['password']) == false) {
+        if (utility\validate::password($_POST['password']) == false) {
             echo 'password must be at least 6 characters';
         } else {
-        //  print_r($_POST);
-        $user = accounts::findUserbyEmail($_POST['email']);
 
-        if ($user == FALSE) {
-
+            $user = accounts::findUserbyEmail($_POST['email']);
+            if ($user == FALSE) {
 
 
                 session_start();
@@ -72,15 +70,14 @@ class accountsController extends http\controller
                 $_SESSION["userID"] = $user->id;
 
                 header("Location:https://web.njit.edu/~as3379/final_project/index.php?page=tasks&action=all");
-            }
-
-        else
-            {
+            } else {
                 $error = 'already registered';
                 self::getTemplate('error', $error);
             }
         }
     }
+
+
 
 
     public static function edit()
